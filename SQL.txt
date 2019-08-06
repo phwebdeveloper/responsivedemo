@@ -1,0 +1,22 @@
+/*Brand name retrieve*/
+select brand_name,prod_name from saleItems 
+LEFT JOIN products on saleItems.product_ID = products.product_ID
+LEFT JOIN brands on brands.brand_ID = products.brand_ID
+where date >= "datefrom" and date <= "dateto"
+group by brand_name,prod_name
+
+/*Qty sold  each branch*/
+select sum(qty),brand_name from saleItems 
+LEFT JOIN products on saleItems.product_ID = products.product_ID
+LEFT JOIN brands on brands.brand_ID = products.brand_ID
+where date >= "datefrom" and date <= "dateto"
+group by brand_name
+
+/*Sales for each branch*/
+select sum(price),brand_name from saleItems 
+LEFT JOIN products on saleItems.product_ID = products.product_ID
+LEFT JOIN brands on brands.brand_ID = products.brand_ID
+where date >= "datefrom" and date <= "dateto"
+group by brand_name
+
+
